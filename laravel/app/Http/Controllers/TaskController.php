@@ -27,7 +27,8 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $task = Task::create($request->all());
+        return $task;
     }
 
     /**
@@ -50,7 +51,19 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        // $task にはデータが既に入っている
+        $task->title = $request->title;
+        $task->updated_at = now();
+        // 上記で代入しただけなので保存する必要がある
+
+        // save メソッドを使用する
+        // 返り値は更新したデータが表示される
+        $task->save();
+        return $task;
+        
+        // update メソッドを使用する
+        // 返り値は成功すると 1 を返す
+        // return $task->update();
     }
 
     /**
@@ -61,6 +74,9 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        // delete メソッドを使用する
+        // 返り値は成功すると 1 を返す
+        $task->delete();
+        return $task;
     }
 }
