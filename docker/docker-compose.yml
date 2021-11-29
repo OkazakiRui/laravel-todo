@@ -37,9 +37,7 @@ services:
     working_dir: /mnt/app/
     volumes:
       - ../app:/mnt/app/
-    command: [sh, -c, yarn && yarn start]
-    ports:
-      - '3000:3000'
+    command: [sh, -c, yarn && PORT=8080 yarn start]
 
   # node:
   #     image: node:lts-alpine
