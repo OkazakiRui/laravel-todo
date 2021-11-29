@@ -1,14 +1,30 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    // err時に再取得を行う回数
+    queries: {
+      retry: false,
+    },
+    // 主にデータを更新するときに使う
+    mutations: {
+      retry: false,
+    },
+  },
+});
+
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </QueryClientProvider>,
   document.getElementById('root'),
 );
 
