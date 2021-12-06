@@ -14,24 +14,13 @@ type Task = {
 };
 
 const TasksPage: VFC = () => {
-  /*
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const getTasks = () => {
-    axios
-      .get<Task[]>('api/tasks')
-      .then(({ data }) => setTasks(data))
-      .catch((err) => console.log(err));
-  };
-  useEffect(() => {
-    getTasks();
-  });
-  */
-
   const { data: tasks, status } = useQuery('tasks', async () => {
     const { data } = await axios.get<Task[]>('api/tasks');
 
     return data;
   });
+
+  console.log(tasks, status);
 
   if (status === 'loading') return <div className="margin-top-mid loader" />;
   if (status === 'error')
