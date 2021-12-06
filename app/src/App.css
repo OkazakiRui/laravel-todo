@@ -327,3 +327,6 @@ ul.tag-list > li > a:hover {
     transform: rotate(1turn);
   }
 }
+.margin-top-mid {
+  margin-top: 48px;
+}
