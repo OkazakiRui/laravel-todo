@@ -16,6 +16,7 @@ class TaskController extends Controller
     public function index()
     {
         // return Task::all();
+        // abort(500);
         return Task::orderByDesc("id")->get();
     }
 
