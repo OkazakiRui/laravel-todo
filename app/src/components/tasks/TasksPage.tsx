@@ -1,24 +1,8 @@
 import { VFC } from 'react';
-import axios from 'axios';
-import { useQuery } from 'react-query';
-
-type Task = {
-  id: number;
-  title: string;
-  // eslint-disable-next-line camelcase
-  is_done: boolean;
-  // eslint-disable-next-line camelcase
-  created_at: Date;
-  // eslint-disable-next-line camelcase
-  updated_at: Date;
-};
+import useTasks from 'queries/TaskQuery';
 
 const TasksPage: VFC = () => {
-  const { data: tasks, status } = useQuery('tasks', async () => {
-    const { data } = await axios.get<Task[]>('api/tasks');
-
-    return data;
-  });
+  const { data: tasks, status } = useTasks();
 
   console.log(tasks, status);
 
