@@ -1,5 +1,6 @@
 import { VFC } from 'react';
 import useTasks from 'queries/TaskQuery';
+import TaskInput from './TaskInput';
 
 const TasksPage: VFC = () => {
   const { data: tasks, status } = useTasks();
@@ -22,20 +23,7 @@ const TasksPage: VFC = () => {
 
   return (
     <>
-      <form className="input-form">
-        <div className="inner">
-          <input
-            type="text"
-            className="input"
-            placeholder="TODOを入力してください。"
-            defaultValue=""
-          />
-          <button type="submit" className="btn is-primary">
-            追加
-          </button>
-        </div>
-      </form>
-
+      <TaskInput />
       <div className="inner">
         <ul className="task-list">
           {tasks.map((task) => (
