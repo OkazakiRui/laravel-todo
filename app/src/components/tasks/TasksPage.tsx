@@ -1,5 +1,6 @@
-import { VFC, useEffect, useState } from 'react';
+import { VFC } from 'react';
 import axios from 'axios';
+import { useQuery } from 'react-query';
 
 type Task = {
   id: number;
@@ -13,18 +14,38 @@ type Task = {
 };
 
 const TasksPage: VFC = () => {
+  /*
   const [tasks, setTasks] = useState<Task[]>([]);
-
   const getTasks = () => {
     axios
       .get<Task[]>('api/tasks')
       .then(({ data }) => setTasks(data))
       .catch((err) => console.log(err));
   };
-
   useEffect(() => {
     getTasks();
   });
+  */
+
+  const { data: tasks, status } = useQuery('tasks', async () => {
+    const { data } = await axios.get<Task[]>('api/tasks');
+
+    return data;
+  });
+
+  if (status === 'loading') return <div className="margin-top-mid loader" />;
+  if (status === 'error')
+    return (
+      <div className="margin-top-mid align-center">
+        データの読み込みに失敗しました。
+      </div>
+    );
+  if (!tasks || tasks.length <= 0)
+    return (
+      <div className="margin-top-mid align-center">
+        登録されたTODOはありません
+      </div>
+    );
 
   return (
     <>
@@ -98,5 +119,4 @@ const TasksPage: VFC = () => {
     </>
   );
 };
-
 export default TasksPage;
