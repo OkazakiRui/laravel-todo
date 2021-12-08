@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -79,5 +80,15 @@ class TaskController extends Controller
         // 返り値は成功すると 1 を返す
         $task->delete();
         return $task;
+    }
+
+    public function updateDone(Request $request, Task $task)
+    {
+        return $task;
+        // $task->is_done = !$task->is_done;
+        // $task->updated_at = now();
+
+        // $task->save();
+        // return $task;
     }
 }
