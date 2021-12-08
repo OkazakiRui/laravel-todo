@@ -82,13 +82,14 @@ class TaskController extends Controller
         return $task;
     }
 
-    public function updateDone(Request $request, Task $task)
+    public function updateDone($id)
     {
-        return $task;
-        // $task->is_done = !$task->is_done;
-        // $task->updated_at = now();
+        $task = Task::find($id);
 
-        // $task->save();
-        // return $task;
+        $task->is_done = !$task->is_done;
+        $task->updated_at = now();
+
+        $task->save();
+        return $task;
     }
 }
