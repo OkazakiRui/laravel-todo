@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::patch('tasks/update-done/{id}', [TaskController::class, 'updateDone']);
 Route::resource('tasks', TaskController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
