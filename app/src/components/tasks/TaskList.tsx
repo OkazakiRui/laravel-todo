@@ -1,5 +1,6 @@
 import { VFC } from 'react';
 import useTasks from 'queries/TaskQuery';
+import TaskItem from 'components/tasks/TaskItem';
 
 const TaskList: VFC = () => {
   const { data: tasks, status } = useTasks();
@@ -23,7 +24,7 @@ const TaskList: VFC = () => {
       <div className="inner">
         <ul className="task-list">
           {tasks.map((task) => (
-            <A task={task} />
+            <TaskItem task={task} />
           ))}
 
           {/* <li>
