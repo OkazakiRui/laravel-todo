@@ -1,7 +1,27 @@
-import getTasks from 'api/TaskAPI';
+import { getTasks, updateDoneTask } from 'api/TaskAPI';
 import { Task } from 'types/Task';
-import { useQuery, UseQueryResult } from 'react-query';
+import {
+  useQuery,
+  UseQueryResult,
+  useMutation,
+  UseMutationResult,
+  useQueryClient,
+} from 'react-query';
 
-const useTasks: () => UseQueryResult<Task[], unknown> = () =>
+export const useTasks: () => UseQueryResult<Task[], unknown> = () =>
   useQuery('tasks', () => getTasks());
-export default useTasks;
+
+export const useUpdateDoneTask: () => UseMutationResult<
+  Task[],
+  unknown,
+  Task,
+  unknown
+> = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(updateDoneTask, {
+    onSuccess: () => {
+      void queryClient.invalidateQueries('tasks');
+    },
+  });
+};
