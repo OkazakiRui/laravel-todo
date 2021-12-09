@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import useTasks from 'queries/TaskQuery';
+import { useTasks } from 'queries/TaskQuery';
 import TaskItem from 'components/tasks/TaskItem';
 
 const TaskList: VFC = () => {
