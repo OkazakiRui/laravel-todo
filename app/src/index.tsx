@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -23,6 +25,7 @@ ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <App />
+      <ToastContainer hideProgressBar />
     </BrowserRouter>
   </QueryClientProvider>,
   document.getElementById('root'),

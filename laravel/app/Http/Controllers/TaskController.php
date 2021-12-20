@@ -84,6 +84,8 @@ class TaskController extends Controller
 
     public function updateDone($id)
     {
+        abort(500);
+
         $task = Task::find($id);
 
         $task->is_done = !$task->is_done;
