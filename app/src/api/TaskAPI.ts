@@ -6,8 +6,12 @@ export const getTasks: () => Promise<Task[]> = async () => {
 
   return data;
 };
-export const updateDoneTask = async ({ id }: Task) => {
-  const { data } = await axios.patch<Task[]>(`api/tasks/update-done/${id}`);
+// eslint-disable-next-line camelcase
+export const updateDoneTask = async ({ id, is_done }: Task) => {
+  const { data } = await axios.patch<Task[]>(`api/tasks/update-done/${id}`, {
+    // eslint-disable-next-line camelcase
+    is_done: !is_done,
+  });
 
   return data;
 };
