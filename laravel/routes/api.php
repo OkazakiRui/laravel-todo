@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::post("login", [LoginController::class, "login"]);
 Route::post("logout", [LoginController::class, "logout"]);
 
-Route::group(["middleware" => "auth:sanctum"], function() {
+// Route::group(["middleware" => "auth:sanctum"], function() {
     Route::patch('tasks/update-done/{id}', [TaskController::class, 'updateDone']);
     Route::resource('tasks', TaskController::class);
     Route::get('user', function (Request $request) {
         return $request->user();
     });
 
-});
+// });
 

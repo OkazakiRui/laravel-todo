@@ -4,7 +4,7 @@ import HelpPage from 'components/help/HelpPage';
 import LoginPage from 'components/login/LoginPage';
 import TasksPage from 'components/tasks/TasksPage';
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 const App: VFC = () => (
   // useEffect(() => {
