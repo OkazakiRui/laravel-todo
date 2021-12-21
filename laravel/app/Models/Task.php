@@ -14,8 +14,9 @@ class Task extends Model
 
     // is_done の値が 0 になっていた
     // booleanに変更したい！
-    // カラムの型を指定したい時は $casts 
+    // カラムの型を指定したい時は $casts
     protected $casts = [
         "is_done" => "bool",
     ];
+
 }

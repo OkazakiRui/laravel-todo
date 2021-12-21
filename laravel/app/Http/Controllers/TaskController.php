@@ -81,10 +81,10 @@ class TaskController extends Controller
         $task->delete();
         return $task;
     }
-
+    
     public function updateDone($id)
     {
-        abort(500);
+        // abort(500);
 
         $task = Task::find($id);
 
