@@ -4,8 +4,18 @@ import HelpPage from 'components/help/HelpPage';
 import LoginPage from 'components/login/LoginPage';
 import TasksPage from 'components/tasks/TasksPage';
 import './App.css';
+import axios from 'axios';
 
 const App: VFC = () => (
+  // useEffect(() => {
+  //   void axios
+  //     .post('/api/login', {
+  //       email: 'admin@example.com',
+  //       password: '123456789',
+  //     })
+  //     .then((res) => console.log(res));
+  // }, []);
+
   <>
     <header className="global-head">
       <ul>
@@ -30,5 +40,4 @@ const App: VFC = () => (
     </Routes>
   </>
 );
-
 export default App;
