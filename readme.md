@@ -1,16 +1,12 @@
-# laravel template
-
+# プロジェクトの立ち上げ方
 ```
-cp -r docker/ makefile 任意フォルダ
+make init
 ```
-
-## sql env
-
+# react
 ```
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=database
-DB_USERNAME=user
-DB_PASSWORD=password
+localhost:8080
+```
+# laravel api
+```
+localhost:8080/api/~
 ```
