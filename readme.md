@@ -1,12 +1,12 @@
-# プロジェクトの立ち上げ方
+### setup
 ```
 make init
 ```
-# react
+### react
 ```
 localhost:8080
 ```
-# laravel api
+### laravel api
 ```
 localhost:8080/api/~
 ```
